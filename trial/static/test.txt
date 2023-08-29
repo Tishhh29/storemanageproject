@@ -1,0 +1,5 @@
+A static file is one that anyone can come and see on your server.
+
+we only add files here that we want to be public.
+
+DON'T add private files

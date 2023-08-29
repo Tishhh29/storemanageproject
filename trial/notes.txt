@@ -1,0 +1,25 @@
+command to begin Django:
+
+//To create  a project do: django-admin startproject <project-name>
+
+// To run server: python manage.py runserver
+// To create an app in your project python manage.py startapp <appname>
+
+// Only a project has settings,you dont have an app specific settings
+
+1. Create urls.py under app folder
+Transfer the admin and views to this 
+
+2. Create a view in app's urls.py
+
+3. Do url dispatching ie create pages of about,contact,services
+
+
+4. Create a static and templates folder.
+// A static file is one that anyone can come and see on your server.
+
+ 'DIRS': [ os.path.join(BASE_DIR,"templates") ]  do this under templates
+ this means that base directory will keep all my templates here
+
+
+
