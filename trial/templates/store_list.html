@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store List</title>
+</head>
+<body>
+    <h1>List of Stores</h1>
+    <ul>
+        {% for store in stores %}
+            <li>{{ store.name }} - {{ store.location }}</li>
+        {% empty %}
+            <li>No stores found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store and Employee Information</title>
+</head>
+<body>
+    <h1>Store and Employee Information</h1>
+
+    <h2>Stores:</h2>
+    <ul>
+        {% for store in stores %}
+            <li>{{ store.name }} - {{ store.location }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Employees:</h2>
+    <ul>
+        {% for employee in employees %}
+            <li>{{ employee.first_name }} {{ employee.last_name }} - {{ employee.position }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

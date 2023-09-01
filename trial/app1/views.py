@@ -1,6 +1,30 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse,redirect
+from .forms import StoreForm
+from django.shortcuts import render
+from faker import Faker
+from .models import Employee,Store
+
 
 # Create your views here.
+
+def populate_store(request):
+    if request.method == 'POST':
+        form = StoreForm(request.POST)
+        if form.is_valid():
+            form.save()  # Save the form data to the Store table
+            return redirect('store_list')  # Redirect to a page that lists all stores (create this view later)
+    else:
+        form = StoreForm()
+
+    return render(request, 'populate_store.html', {'form': form})
+
+
+#create a view function called store_list that retrieves all the stores
+#  from the database and renders a template to display them.
+
+def store_list(request):
+    stores = Store.objects.all()
+    return render(request, 'store_list.html', {'stores': stores})
 
 def index(request): 
     
@@ -10,12 +34,7 @@ def index(request):
     return render(request, 'index.html',context)
 
    
-
-
-from django.shortcuts import render
-from faker import Faker
-from .models import Employee
-
+# TO FILL DATA IN EMPLOYEE TABLE
 def populate_fake_data(request):
     fake = Faker()
     num_records = 10
@@ -47,6 +66,23 @@ def populate_fake_data(request):
     
    
     return render(request, 'employee_names.html',{'employees': employees})
+
+# a view function that retrieves data from the Store and Employee tables and passes it to a template.
+def store_employee_info(request):
+    stores = Store.objects.all()
+    employees = Employee.objects.all()
+    
+    context = {
+        'stores': stores,
+        'employees': employees,
+    }
+    
+    return render(request, 'store_employee_info.html', context)
+
+
+
+
+
 
 
 # def index(request):
