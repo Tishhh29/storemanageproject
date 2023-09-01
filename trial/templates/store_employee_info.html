@@ -2,22 +2,85 @@
 <html>
 <head>
     <title>Store and Employee Information</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Store and Employee Information</h1>
 
     <h2>Stores:</h2>
-    <ul>
-        {% for store in stores %}
-            <li>{{ store.name }} - {{ store.location }}</li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Contact Number</th>
+                <th>Opening Hours</th>
+                <th>Closing Hours</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for store in stores %}
+                <tr>
+                    <td>{{ store.name }}</td>
+                    <td>{{ store.location }}</td>
+                    <td>{{ store.contact_number }}</td>
+                    <td>{{ store.opening_hours }}</td>
+                    <td>{{ store.closing_hours }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No stores found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <h2>Employees:</h2>
-    <ul>
-        {% for employee in employees %}
-            <li>{{ employee.first_name }} {{ employee.last_name }} - {{ employee.position }}</li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+                    <td>{{ employee.position }}</td>
+                    <td>{{ employee.contact_number }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.address }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No employees found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
