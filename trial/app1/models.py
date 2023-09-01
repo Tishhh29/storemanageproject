@@ -20,8 +20,8 @@ class Employee(models.Model):
     address = models.TextField()
     hire_date = models.DateField()
     salary = models.DecimalField(max_digits=10, decimal_places=2)
-    # store = models.ForeignKey(Store, on_delete=models.CASCADE)
-
+    store = models.ForeignKey(Store, on_delete=models.CASCADE,default= 1)
+    
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
